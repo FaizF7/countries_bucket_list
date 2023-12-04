@@ -18,13 +18,13 @@ const CountryContainer = () => {
         if (countries.includes(country)){
         let UpdatedVisitedCountries = [...visitedCountries,country]
         setVisitedCountries(UpdatedVisitedCountries)
-        countries.splice(countryId,1)
+        countries.splice(countries.indexOf(country),1)
         setCountries(countries)
         }
         else{
             let updatedCountries = [...countries,country]
             setCountries(updatedCountries)
-            visitedCountries.splice(countryId,1)
+            visitedCountries.splice(visitedCountries.indexOf(country),1)
             setVisitedCountries(visitedCountries)
         }
     }
@@ -34,17 +34,20 @@ const CountryContainer = () => {
     },[])
 
     return (  
-        <>  <h2>Countries</h2>
-            <CountryList 
-            title = "Visited Countries"
-            countries = {visitedCountries? visitedCountries:<p>Loading...</p>}
-            handleVisitButtonClick = {onVisitButtonClick}
-            />  
-            <CountryList 
-            title = "Countries"
-            countries = {countries? countries:<p>Loading...</p>}
-            handleVisitButtonClick = {onVisitButtonClick}
-            />
+        <>  
+            <h2>Countries Bucket List</h2>
+            <section>
+                <CountryList 
+                title = "Countries"
+                countries = {countries? countries:<p>Loading...</p>}
+                handleVisitButtonClick = {onVisitButtonClick}
+                />
+                <CountryList 
+                title = "Visited Countries"
+                countries = {visitedCountries? visitedCountries:<p>Loading...</p>}
+                handleVisitButtonClick = {onVisitButtonClick}
+                />  
+            </section>
 
         </>
     );

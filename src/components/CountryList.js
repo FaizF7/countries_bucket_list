@@ -9,13 +9,13 @@ const CountryList = ({title, countries, handleVisitButtonClick}) => {
 
     return (  
 
-        <>
+        <div>
             <h2>{title}</h2>
             <ul>
             {countries? countriesList:<p>Loading...</p>}
             </ul>
             
-        </>
+        </div>
 
     );
 }

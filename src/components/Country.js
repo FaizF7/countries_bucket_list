@@ -11,9 +11,9 @@ const Country = ({country, key, handleClick}) => {
         console.log(visited);
         let isVisited = visited? 1:0
         handleClick(country, key, isVisited)
-        console.log(visited);
+        // console.log(visited);
         let oppVisited = !(visited)
-        
+        console.log(oppVisited);
         setVisited(oppVisited)
         console.log(visited);
     })
@@ -22,9 +22,9 @@ const Country = ({country, key, handleClick}) => {
         <>
             <h3>{country.name.common}</h3>
             <button 
+            type="checkbox"
             onClick={onButtonClick}
-            
-            >{visited? "Unvisit":"Visited"}</button>
+            >Visited</button>
         </>
     );
 }
