@@ -3,3 +3,8 @@ section {
     display: flex;
     /* flex-direction: column; */
 }
+
+input {
+    display: flex;
+    align-items: center;
+}

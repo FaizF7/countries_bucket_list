@@ -4,6 +4,7 @@ import CountryList from '../components/CountryList';
 
 const CountryContainer = () => {
 
+    const [allCountries, setAllCountries] = useState([])
     const [countries, setCountries] = useState([])
     const [visitedCountries, setVisitedCountries] = useState([])
 
@@ -12,6 +13,7 @@ const CountryContainer = () => {
         const countries = await response.json()
         console.log(countries)
         setCountries(countries)
+        setAllCountries(countries)
     }
 
     const onVisitButtonClick = (country, countryId,visited)=>{
@@ -33,9 +35,25 @@ const CountryContainer = () => {
         loadCountries()
     },[])
 
+    const filterCountries=(event) =>{
+        console.log(event);
+        const filteredCountries = allCountries.filter((country)=> country.name.common.toLowerCase().includes(event.target.value.toLowerCase()))
+
+        if (event.target.value.length>0) {setCountries(filteredCountries)}//:setCountries(countries)
+    }
+
+    // useEffect((event)=>{
+    //     filterCountries(event.target.value)
+    // })
+
     return (  
         <>  
             <h2>Countries Bucket List</h2>
+            <input 
+            type='text' 
+            placeholder='search you country'
+            onChange={filterCountries}
+            ></input>
             <section>
                 <CountryList 
                 title = "Countries"

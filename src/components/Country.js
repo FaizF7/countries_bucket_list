@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-const Country = ({country, key, handleClick}) => {
+const Country = ({country, handleClick}) => {
 
     // let visited = false
 
@@ -10,7 +10,7 @@ const Country = ({country, key, handleClick}) => {
     const onButtonClick = (()=>{
         console.log(visited);
         let isVisited = visited? 1:0
-        handleClick(country, key, isVisited)
+        handleClick(country, isVisited)
         // console.log(visited);
         let oppVisited = !(visited)
         console.log(oppVisited);
